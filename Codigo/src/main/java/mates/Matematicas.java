@@ -17,13 +17,16 @@ import java.util.Random;
 import static java.lang.Math.pow;
 
 public class Matematicas {
+
     /**
-     * Genera una aproximación al número pi mediante el metodo de Montecarlo.
-     * El parámetro ‘pasos‘ indica el número de puntos generados.
-     */
+    * Genera una aproximación al número pi mediante el metodo de Montecarlo.
+    * El parámetro ‘pasos‘ indica el número de puntos generados.
+    */
+
     public static double generarNumeroPi(long pasos) {
         Random rand = new Random();
         long aciertos = 0;
+        double areaCuadrado = 4.0;
 
         for (long i = 0; i < pasos; i++) {
             double x = rand.nextDouble() * 2 - 1;
@@ -34,6 +37,6 @@ public class Matematicas {
             }
         }
 
-        return 4.0 * aciertos / pasos;
+        return areaCuadrado * aciertos / pasos;
     }
 }

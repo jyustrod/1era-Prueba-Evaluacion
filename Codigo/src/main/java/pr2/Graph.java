@@ -1,12 +1,23 @@
+/*
+Copyright 2025 Javier Yustres Rodriguez
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+either express or implied. See the License for the specific
+language governing permissions and limitations under the
+License.
+*/
+
 package pr2;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.List;
+import java.util.*;
 
 public class Graph <V> {
-    //Lista de adyacencia.
+
     private Map<V, Set<V>> adjacencyList = new HashMap<>();
 
     /******************************************************************
@@ -17,7 +28,11 @@ public class Graph <V> {
     * ******************************************************************/
 
     public boolean addVertex(V v) {
-        return true; //Este código hay que modificarlo.
+        if (adjacencyList.containsKey(v)) {
+            return false;
+        }
+        adjacencyList.put(v, new HashSet<>());
+        return true;
     }
 
     /******************************************************************
@@ -32,18 +47,19 @@ public class Graph <V> {
     * ******************************************************************/
 
     public boolean addEdge(V v1, V v2) {
-        return true; //Este código hay que modificarlo.
+        addVertex(v1);
+        addVertex(v2);
+        return adjacencyList.get(v1).add(v2);
     }
 
   /******************************************************************
   * Obtiene el conjunto de vértices adyacentes a ‘v‘.
-  *
   * @param v vértice del que se obtienen los adyacentes.
   * @return conjunto de vértices adyacentes.
   ******************************************************************/
 
     public Set<V> obtainAdjacents(V v) throws Exception {
-        return null; //Este código hay que modificarlo.
+        return adjacencyList.getOrDefault(v, Collections.emptySet());
     }
 
     /******************************************************************
@@ -54,7 +70,7 @@ public class Graph <V> {
     * ******************************************************************/
 
     public boolean containsVertex(V v) {
-        return true; //Este código hay que modificarlo.
+        return adjacencyList.containsKey(v);
     }
 
     /******************************************************************
@@ -65,7 +81,7 @@ public class Graph <V> {
 
     @Override
     public String toString(){
-        return ""; //Este código hay que modificarlo.
+        return adjacencyList.toString();
     }
 
     /*********************************************************
@@ -79,6 +95,39 @@ public class Graph <V> {
     *********************************************************/
 
     public List<V> onePath(V v1, V v2){
-        return null; //Este código hay que modificarlo.
+        if (!containsVertex(v1) || !containsVertex(v2)) {
+            return null;
+        }
+        Map<V, V> traza = new HashMap<>();
+        Deque<V> abierta = new ArrayDeque<>();
+        abierta.push(v1);
+        traza.put(v1, null);
+        boolean encontrado = false;
+
+        while (!abierta.isEmpty() && !encontrado) {
+            V v = abierta.pop();
+            encontrado = v.equals(v2);
+            if (!encontrado) {
+                try {
+                    for (V s : obtainAdjacents(v)) {
+                        abierta.push(s);
+                        traza.put(s, v);
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        if (encontrado) {
+            List<V> path = new ArrayList<>();
+            for (V at = v2; at != null; at = traza.get(at)) {
+                path.add(at);
+            }
+            Collections.reverse(path);
+            return path;
+        } else {
+            return null;
+        }
     }
 }
