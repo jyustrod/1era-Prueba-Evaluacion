@@ -30,9 +30,9 @@ public class Tablero{
     private int[][] estadoActual = new int[DIMENSION][DIMENSION];
     private int[][] estadoSiguiente = new int[DIMENSION][DIMENSION];
 
-    /********************************************************
+    /**
      * Lee el estado inicial de un fichero llamado ‘matriz‘.
-     ********************************************************/
+     **/
 
     public void leerEstadoActual () {
         try (BufferedReader br = new BufferedReader(new FileReader("Codigo/src/main/java/dominio/matriz"))) {
@@ -47,12 +47,12 @@ public class Tablero{
         }
     }
 
-    /********************************************************
+    /**
      * Genera un estado inicial aleatorio. Para cada celda
      * genera un número aleatorio en el intervalo [0, 1). Si
      * el número es menor que 0,5, entonces la celda está
      * inicialmente viva. En caso contrario, está muerta.
-     *******************************************************/
+     */
 
     public void generarEstadoActualPorMontecarlo () {
         Random rand = new Random();
@@ -67,10 +67,10 @@ public class Tablero{
         }
     }
 
-    /********************************************************
+    /**
      * Transita al estado siguiente según las reglas del
      * juego de la vida.
-     ********************************************************/
+     */
 
     public void transitarAlEstadoSiguiente () {
         for (int i = 0; i < DIMENSION; i++) {
@@ -98,12 +98,12 @@ public class Tablero{
         estadoSiguiente = temp;
     }
 
-    /*******************************************************
+    /**
      * Devuelve el numero de vecinos vivos de una celda (x, y).
      * @param x la coordenada x de la celda a evaluar.
      * @param y la coordenada y de la celda a evaluar.
      * @return el numero de vecinos vivos..
-     *******************************************************/
+     */
 
     private int contarVecinosVivos(int x, int y) {
         int vivos = 0;
@@ -119,10 +119,10 @@ public class Tablero{
         return vivos;
     }
 
-    /*******************************************************
+    /**
      * Devuelve, en modo texto, el estado actual.
      * @return el estado actual.
-     *******************************************************/
+     */
 
     @Override
     public String toString () {
