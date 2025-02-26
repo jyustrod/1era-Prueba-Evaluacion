@@ -13,6 +13,7 @@ License.
 */
 
 package mates;
+
 import java.util.Random;
 import static java.lang.Math.pow;
 

@@ -12,6 +12,8 @@ language governing permissions and limitations under the
 License.
 */
 
+package tests;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
