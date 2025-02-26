@@ -14,8 +14,8 @@ License.
 
 package aplicacion;
 
-import mates.Matematicas;
-import dominio.Tablero;
+import aplicacion.mates.Matematicas;
+import aplicacion.dominio.Tablero;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;

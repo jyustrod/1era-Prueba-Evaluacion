@@ -1,5 +1,5 @@
 aplicacion
-dominio
-mates
-pr2
+aplicacion.dominio
+aplicacion.mates
+aplicacion.pr2
 tests

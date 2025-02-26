@@ -12,7 +12,7 @@ language governing permissions and limitations under the
 License.
 */
 
-package pr2;
+package aplicacion.pr2;
 
 import java.util.*;
 
