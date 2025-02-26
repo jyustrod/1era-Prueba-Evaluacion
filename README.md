@@ -12,6 +12,7 @@ Este proyecto contiene varias implementaciones en Java relacionadas con algoritm
 ## Contenido del Proyecto
 El proyecto está dividido en los siguientes paquetes:
 
+- `aplicacion`: Contiene los paquetes `mates`, `dominio`, y `pr2`.
 - `mates`: Contiene la clase `Matematicas.java` con el metodo `generarNumeroPi()`.
 - `dominio`: Contiene la clase `Tablero.java` que maneja el estado del Juego de la Vida y el fichero `matriz.txt` que contiene el estado inicial del tablero.
 - `pr2`: Contiene la clase `Graph.java` con la implementacion de un grafo y la busqueda de caminos.

@@ -12,7 +12,7 @@ language governing permissions and limitations under the
 License.
 */
 
-package mates;
+package aplicacion.mates;
 
 import java.util.Random;
 import static java.lang.Math.pow;

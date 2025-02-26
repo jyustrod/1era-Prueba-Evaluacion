@@ -12,7 +12,7 @@ language governing permissions and limitations under the
 License.
 */
 
-package dominio;
+package aplicacion.dominio;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -35,7 +35,7 @@ public class Tablero{
      **/
 
     public void leerEstadoActual () {
-        try (BufferedReader br = new BufferedReader(new FileReader("Codigo/src/main/java/dominio/matriz"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Codigo/src/main/java/aplicacion/dominio/matriz"))) {
             for (int i = 0; i < DIMENSION; i++) {
                 String linea = br.readLine();
                 for (int j = 0; j < DIMENSION; j++) {
